@@ -8,6 +8,12 @@ import deved from '../public/deved.jpg'
 import datavis from "../public/datavis.jpg"
 import ai from "../public/ai.jpg"
 import computervision from "../public/computervision.png"
+import headofmarketing from "../public/stuco.png"
+import headofadmin from "../public/e-cell.png"
+import unstopreg from "../public/unstop.png"
+import netra from "../public/netra.png"
+import codeclause from "../public/codeclause.png"
+import codsoft from "../public/codsoft.png"
 
 
 const certificationsData = [
@@ -91,7 +97,7 @@ export default function Home() {
         />
       </Head>
 
-      <main className="bg- px-10 md:px-20 lg:px-40">
+      <main className="bg-white px-10 md:px-20 lg:px-40">
         <section className="min-h-screen">
              
 <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
@@ -242,7 +248,7 @@ Bringing extensive team management and campaign expertise, complemented by hands
       <div class="grid gap-8 mb-6 md:grid-cols-2">
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="https://www.linkedin.com/company/stme-nmims-navi-mumbai/mycompany/" target="_blank">
-                  <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/stuco.png" alt="Head of Marketing" width={300} height={45} />
+              <Image src={headofmarketing} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -256,7 +262,7 @@ Bringing extensive team management and campaign expertise, complemented by hands
           </div> 
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
-              <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/e-cell.png" alt="Head of Marketing" width={300} height={45} />
+              <Image src={headofadmin} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white pt-5">
@@ -270,7 +276,7 @@ Bringing extensive team management and campaign expertise, complemented by hands
           </div> 
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
-              <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/unstop.png" alt="Regional Student Director" width={300} height={45} />
+              <Image src={unstopreg} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white pt-5">
@@ -284,7 +290,7 @@ Bringing extensive team management and campaign expertise, complemented by hands
           </div> 
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
-              <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/netra.png" alt="Head of Marketing" width={300} height={45} />
+              <Image src={netra} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white pt-5">
@@ -298,7 +304,7 @@ Bringing extensive team management and campaign expertise, complemented by hands
           </div> 
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
-              <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/codeclause.png" alt="DataScience Intern" width={300} height={45} />
+              <Image src={codeclause} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white pt-5">
@@ -312,7 +318,7 @@ Bringing extensive team management and campaign expertise, complemented by hands
           </div> 
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
-                <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/codsoft.png" alt="Machine Learning Intern" width={300} height={45} />
+              <Image src={codsoft} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white pt-5">
@@ -616,4 +622,5 @@ Bringing extensive team management and campaign expertise, complemented by hands
     </div>
   );
 }
+
 
