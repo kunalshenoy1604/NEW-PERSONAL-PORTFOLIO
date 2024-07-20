@@ -1,16 +1,39 @@
+"use client";
+
 import Head from "next/head";
+import { useState, useRef, useEffect } from "react";
 import {BsFillMoonStarsFill} from 'react-icons/bs';
+import { motion } from 'framer-motion';
 import { AiFillLinkedin, AiFillTwitterCircle, AiFillYoutube } from "react-icons/ai";  
 import { DiGithubBadge } from "react-icons/di";  
-import { IoLogoLinkedin } from "react-icons/io"; 
+import { IoLogoLinkedin } from "react-icons/io";
+import ReactPlayer from "react-player"; 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import deved from '../public/deved.jpg' 
 import datavis from "../public/datavis.jpg"
 import ai from "../public/ai.jpg"
 import computervision from "../public/computervision.png"
+import headofmarketing from "../public/stuco.png"
+import headofadmin from "../public/e-cell.png"
+import unstopreg from "../public/unstop.png"
+import netra from "../public/netra.png"
+import codeclause from "../public/codeclause.png"
+import codsoft from "../public/codsoft.png"
+import techcider from "../public/techcider.png"
+import kunal from "../public/kunal.png"
+import genai from "../public/genai.png"
 
 
 const certificationsData = [
+  {
+    title: "Career Essentials in Generative AI by Microsoft and LinkedIn",
+    organization: "Microsoft",
+    date: "July 2024",
+    image: "/genai.png", // Add your certification image path
+  },
   {
     title: "Data Science Job Simulation",
     organization: "BCG X",
@@ -67,9 +90,78 @@ const certificationsData = [
   },
 ];
 
+const achievementsData = [
+  {
+    title: "Addressed First Year Students on the Benefits Joining Techcider Club",
+    organization: "STME-NMIMS Navi Mumbai",
+    date: "July 2024",
+    media: "/kunalvideo.mp4",
+    type: "video"
+  },
+  {
+    title: "Certified with Career Essentials in Generative AI by Microsoft",
+    organization: "Microsoft & LinkedIn",
+    date: "July 2024",
+    media: "/genai.png",
+    type: "image"
+  },
+  {
+    title: "Appointed as Head of Techcider",
+    organization: "STME-NMIMS Navi Mumbai",
+    date: "July 2024",
+    media: "/techcider_gif.mp4",
+    type: "video"
+  },
+  {
+    title: "Featured in Unstop's Ambassadors' Career Report Card",
+    organization: "Unstop",
+    date: "July 2024",
+    media:"/unstop_feature.png",
+    type: "image"
+  },
+  {
+    title: "With Mr. Ankit Agarwal, Founder & CEO at Unstop in ETHR World Conference",
+    organization: "ETHR World Conference",
+    date: "May 2024",
+    media:"/ETHR.png",
+    type: "image"
+  }
+];
+
 const backgroundImage = 'bg.jpg';
 
 export default function Home() {
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.slickPause();
+    }
+  }, [currentSlide]);
+
+  const settings ={
+    dots: true,
+    infinite: true,
+    speed: 700,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    beforeChange: (oldIndex, newIndex) => {
+      const currentVideo = document.querySelector(`#video-${oldIndex}`);
+      if (currentVideo) {
+        currentVideo.pause();
+      }
+    },
+    afterChange: (index) => {
+      setCurrentSlide(index);
+      const newVideo = document.querySelector(`#video-${index}`);
+      if (newVideo) {
+        newVideo.play();
+      }
+    },
+  };
   return (
     <div>
       <Head>
@@ -91,7 +183,7 @@ export default function Home() {
         />
       </Head>
 
-      <main className="bg- px-10 md:px-20 lg:px-40">
+      <main className="bg-white px-10 md:px-20 lg:px-40">
         <section className="min-h-screen">
              
 <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
@@ -102,7 +194,12 @@ export default function Home() {
   </a>
 
   <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-      <button type="button" class="text-white bg-teal-600 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-teal-600 dark:hover:text-teal-700 dark:focus:ring-teal-800"><a href="https://drive.google.com/file/d/10NYES0N38CESj7CXjyV3IlyAGMAQWrCX/view?usp=sharing"  target="_blank" rel="noopener noreferrer">Resume</a></button>
+  <button onClick={() => setDarkMode(!darkMode)} className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"></button>
+      <motion.button 
+        whileTap={{ scale: 0.95 }}
+        whileHover={{ backgroundColor: '#F47216' }}
+        type="button" class="text-white bg-teal-600 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-teal-600 dark:hover:text-teal-700 dark:focus:ring-teal-800"><a href="https://drive.google.com/file/d/1R8spLgB9eImWmRq3RNvgNHHNOh_wYaJI/view?usp=sharing"  target="_blank" rel="noopener noreferrer">Resume</a>
+      </motion.button>
       <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -170,10 +267,55 @@ export default function Home() {
             
             
           </div>
-          <div className="relative mx-auto w-80 h-80 md:h-96 md:w-96">
-            <Image src={deved}  layout="fill" objectFit="cover"/>
+          <div className="relative mx-auto w-100 h-100 md:h-80 md:w-40">
+            <Image src={kunal} className="rounded-full" layout="fill" objectFit="cover" />
           </div>
         </section>
+
+
+  
+        <section className="bg-white py-12">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-8 text-center">Recent Achievements</h2>
+        <div className="relative max-w-3xl mx-auto">
+          <Slider ref={sliderRef} {...settings}>
+            {achievementsData.map((achievement, index) => (
+              <div key={index} className="px-2">
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <div className="mb-4 w-full h-48 md:h-64 relative overflow-hidden">
+                    {achievement.type === 'image' ? (
+                      <Image 
+                        src={achievement.media} 
+                        alt={achievement.title} 
+                        layout="fill"
+                        objectFit="contain"
+                        className="rounded-md"
+                      />
+                    ) : (
+                      <video 
+                        id={`video-${index}`}
+                        src={achievement.media} 
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-contain rounded-md"
+                      />
+                    )}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{achievement.title}</h3>
+                  <p className="text-gray-600 text-base mb-1">{achievement.organization}</p>
+                  <p className="text-gray-500 text-sm">{achievement.date}</p>
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </div>
+    </section>
+
+          
+
         <script
           src="https://www.chatbase.co/embed.min.js"
           chatbotId="SDw3A-Ci_mHICncgcvXrq"
@@ -182,7 +324,7 @@ export default function Home() {
         ></script>
         <section>
           <div className="text-center mx-auto">
-          <h2 id="Service" class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">My Services</h2>
+          <h2 id="Service" class="pt-7 mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">My Services</h2>
             <p className="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
               Providing practical knowledge in Data Science Technologies through hands-on projects, coursework and delivering data-driven solutions.
             </p>
@@ -240,37 +382,66 @@ Bringing extensive team management and campaign expertise, complemented by hands
 </p>
       </div> 
       <div class="grid gap-8 mb-6 md:grid-cols-2">
+      
+      <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+              <a href="#">
+              <Image src={unstopreg} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
+              </a>
+              <div class="p-5">
+                  <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white pt-5">
+                      <a href="#">AI/ ML Intern</a>
+                  </h3>
+                  <span class="text-gray-500 dark:text-gray-400 pb-4">Unstop</span>
+                  <h4 class="text-l font-bold tracking-tight text-gray-900 dark:text-white py-3">June '24 - August '24</h4>
+                  <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Working on several projects in-house using Vertex AI and ML Models to solve creative use cases.</p>
+
+              </div>
+          </div> 
+      <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+              <a href="https://www.linkedin.com/company/stme-nmims-navi-mumbai/mycompany/" target="_blank">
+              <Image src={techcider} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
+              </a>
+              <div class="p-5">
+                  <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      <a href="https://www.linkedin.com/company/stme-nmims-navi-mumbai/mycompany/" target="_blank">Head of Techcider Club</a>
+                  </h3>
+                  <span class="text-gray-500 dark:text-gray-400">STME</span>
+                  <h4 class="text-l font-bold tracking-tight text-gray-900 dark:text-white py-3">July '24 - Present</h4>
+                  <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Leading Techcider for enhancing the coding culture and technical environment.</p>
+                  
+              </div>
+          </div>
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="https://www.linkedin.com/company/stme-nmims-navi-mumbai/mycompany/" target="_blank">
-                  <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/stuco.png" alt="Head of Marketing" width={300} height={45} />
+              <Image src={headofmarketing} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                       <a href="https://www.linkedin.com/company/stme-nmims-navi-mumbai/mycompany/" target="_blank">Head of Marketing</a>
                   </h3>
                   <span class="text-gray-500 dark:text-gray-400">Public Relations, STME</span>
-                  <h4 class="text-l font-bold tracking-tight text-gray-900 dark:text-white py-3">July '23 - Present</h4>
+                  <h4 class="text-l font-bold tracking-tight text-gray-900 dark:text-white py-3">July '23 - June '24</h4>
                   <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Adept at fostering event growth through strategic engagements.</p>
                   
               </div>
           </div> 
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
-              <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/e-cell.png" alt="Head of Marketing" width={300} height={45} />
+              <Image src={headofadmin} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white pt-5">
                       <a href="#">Head of Administration</a>
                   </h3>
                   <span class="text-gray-500 dark:text-gray-400 pb-4">Entrepreneurship Cell, STME</span>
-                  <h4 class="text-l font-bold tracking-tight text-gray-900 dark:text-white py-3">October '23 - Present</h4>
+                  <h4 class="text-l font-bold tracking-tight text-gray-900 dark:text-white py-3">October '23 - June '24</h4>
                   <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Proficiency in crafting strategic reports and meticulous administrative affairs for E-Cell organized events.</p>
 
               </div>
           </div> 
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
-              <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/unstop.png" alt="Regional Student Director" width={300} height={45} />
+              <Image src={unstopreg} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white pt-5">
@@ -284,21 +455,21 @@ Bringing extensive team management and campaign expertise, complemented by hands
           </div> 
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
-              <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/netra.png" alt="Head of Marketing" width={300} height={45} />
+              <Image src={netra} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white pt-5">
                       <a href="#">Campaign Manager</a>
                   </h3>
                   <span class="text-gray-500 dark:text-gray-400 pb-4">Netra Campaign</span>
-                  <h4 class="text-l font-bold tracking-tight text-gray-900 dark:text-white py-3">January '24 - Present</h4>
+                  <h4 class="text-l font-bold tracking-tight text-gray-900 dark:text-white py-3">January '24 - September '24</h4>
                   <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Orchestrating targeted initiatives, manage outreach, and drive engagement for Glaucoma Awareness</p>
 
               </div>
           </div> 
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
-              <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/codeclause.png" alt="DataScience Intern" width={300} height={45} />
+              <Image src={codeclause} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white pt-5">
@@ -312,7 +483,7 @@ Bringing extensive team management and campaign expertise, complemented by hands
           </div> 
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
-                <Image className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="/codsoft.png" alt="Machine Learning Intern" width={300} height={45} />
+              <Image src={codsoft} width={300} height={45} className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"></Image>
               </a>
               <div class="p-5">
                   <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white pt-5">
